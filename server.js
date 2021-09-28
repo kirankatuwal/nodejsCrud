@@ -28,12 +28,10 @@ app.use('/js', express.static(path.join(__dirname, 'assets/js')));
 app.use('/css', express.static(path.join(__dirname, 'assets/css')));
 
 // set view engine
-app.set('view engine', "ejs")
+app.set('view engine', "ejs");
 
-app.get('/', (req, res) => {
-    res.render("index");
-});
-
+//  Loads router
+app.use('/', require('./server/routes/router'));
 
 app.listen(PORT, () => {
     console.log(`Server started on http://localhost:${PORT} port`);
